@@ -1,16 +1,20 @@
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import './styles.css';
 import Home from './routes/Home';
 import Detail from './routes/Detail';
+import Header from './components/Header';
 
 function App() {
   return (
-    <Route basename={process.env.PUBLIC_URL}>
-      <Routes>
-        <Route path="/hello" element={<h1>Hello</h1>} />
-        <Route path="/movie/:id" element={<Detail />} />
-        <Route path="/" element={<Home />} />
-      </Routes>
-    </Route>
+    <>
+      <Router basename={process.env.PUBLIC_URL}>
+        <Header />
+        <Routes>
+          <Route path="/movie/:id" element={<Detail />} />
+          <Route path="/" element={<Home />} />
+        </Routes>
+      </Router>
+    </>
   );
 }
 
